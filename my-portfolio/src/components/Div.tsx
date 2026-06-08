@@ -111,7 +111,7 @@ export default function RundownDivider() {
         <div className="rundownWrap">
           <div className="rundownText">
             <div className="rundownTitle">From information to insight</div>
-            <div className="rundownSub">A few things I’ve built</div>
+            <div className="rundownSub">A few things I have built</div>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 type NoteStyle = "pin" | "tape";
 type NoteSize = "note--sm" | "note--md" | "note--lg";
@@ -34,7 +34,7 @@ type BoardNote =
 const boardNotes = [
   {
     title: "Funding Bulletin",
-    body: "Updating WEEKLY — adding new Funding Opportunities for Researchers using CMS.",
+    body: "Updated weekly with new funding opportunities for researchers, maintained using CMS.",
     color: "note-butter",
     size: "note--lg",
     x: "18",
@@ -47,7 +47,7 @@ const boardNotes = [
   },
   {
     title: "RDM Finder",
-    body: "A website to help people find RDM resources faster - Under construction.",
+    body: "A research data storage finder for Ontario Tech researchers! Live and actively maintained.",
     color: "note-sky",
     size: "note--md",
     x: "49",
@@ -55,183 +55,138 @@ const boardNotes = [
     r: "6deg",
     style: "tape",
     kind: "link",
-    // if you want this to go somewhere later, swap the href
-    href: "#",
+    href: "https://research.ontariotechu.ca/faculty/research-data-management/research-data-storage-finder/index.php",
+    targetBlank: true,
   },
   {
-  title: "Social Media",
-  body: "Reels, posts, YouTube edits, content planning.",
-  color: "note-rose",
-  size: "note--sm",
-  x: "77",
-  y: "28",
-  r: "9deg",
-  style: "pin",
-  kind: "modal",
-  modalTitle: "ORS Socials I Manage",
-  modalContent: (
-    <div className="boardModalBody">
-      <p className="muted" style={{ marginTop: 0 }}>
-        Channels I actively manage / publish for:
-      </p>
-
-      <ul className="boardModalList">
-        <li>
-          <a
-            href="https://www.instagram.com/ot_vpresearch/"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            Instagram
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://x.com/OT_VPResearch"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            X (Twitter)
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://www.facebook.com/otvpresearch/"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            Facebook
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://www.youtube.com/@OT_VPResearch"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            YouTube
-          </a>
-        </li>
-      </ul>
-
-      <p className="muted" style={{ marginBottom: 0 }}>
-      </p>
-    </div>
-  ),
-},
-
- {
-  title: "Event Hosting",
-  body: "URA Student Research Awards - Co-Organizer/host (3 years).",
-  color: "note-mint",
-  size: "note--md",
-  x: "62",
-  y: "58",
-  r: "-5deg",
-  style: "pin",
-  kind: "modal",
-  modalTitle: "URA Student Research Awards — Co-Organizer (3 Years)",
-  modalContent: (
-    <div className="boardModalBody">
-      <ul className="boardModalList">
-        <li>
-          Led end-to-end planning and execution of a large-scale academic awards
-          event, coordinating stakeholders across research, administration,
-          and student teams.
-        </li>
-        <li>
-          Managed sponsor relationships, communications, and on-site requirements,
-          ensuring deliverables, visibility, and smooth collaboration.
-        </li>
-        <li>
-          Oversaw event logistics including schedules, venue setup, volunteer
-          coordination, and real-time issue resolution during live sessions.
-        </li>
-        <li>
-          Planned and coordinated food services and external vendors, balancing
-          budget constraints, accessibility needs, and attendee experience.
-        </li>
-        <li>
-          Directed social media strategy across pre-event promotion, live coverage,
-          and post-event reporting to maximize engagement and reach.
-        </li>
-        <li>
-          Served as Co-Organizer across three consecutive years, contributing to
-          strategic planning, task delegation, and continuous process improvement.
-        </li>
-      </ul>
-    </div>
-  ),
-},
-
- {
-  title: "University Clubs",
-  body: "Design + marketing + community work + workshops",
-  color: "note-mango",
-  size: "note--lg",
-  x: "33",
-  y: "66",
-  r: "4deg",
-  style: "tape",
-  kind: "modal",
-  modalTitle: "University Club Socials I Manage",
-  modalContent: (
-    <div className="boardModalBody">
-      <p className="muted" style={{ marginTop: 0 }}>
-        Quick links:
-      </p>
-
-      <ul className="boardModalList">
-        <li>
-          <a
-            href="https://www.instagram.com/otu_gdg/"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            GDG Ontario Tech - Instagram
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://ca.linkedin.com/company/otu-gddon"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            GDG Ontario Tech - LinkedIn
-          </a>
-        </li>
-         <li>
-          <a
-            href="https://linktr.ee/otu.gdsc?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGn5AILeAozBCN6WZ71Bw4B0gOYBEmvunr7RtR4KcY99Z-s9uT8bZou44woi20_aem_8H3buErOUF0A0cnNQVz1Pg"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            GDG Ontario Tech - Linktree
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://www.instagram.com/ot_poetsociety/"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            Poets Society - Instagram
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://linktr.ee/otpoetsociety?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnY7J7jT0TULZafawDIiIwLrIWWqqH3UHXEmsVkHblj5bhJybnUcZ2j6Zhgl4_aem_LMIfi6NfFNZ5akAKpcXEug"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            Poets Society - Linktree  
-          </a>
-        </li>
-      </ul>
-    </div>
-  ),
-},
-
+    title: "Digital Marketing",
+    body: "Content creation across Instagram, YouTube, X, and Facebook for OT Research.",
+    color: "note-rose",
+    size: "note--sm",
+    x: "77",
+    y: "28",
+    r: "9deg",
+    style: "pin",
+    kind: "modal",
+    modalTitle: "ORS Socials I have managed",
+    modalContent: (
+      <div className="boardModalBody">
+        <p className="muted" style={{ marginTop: 0 }}>
+          Channels I managed and published for:
+        </p>
+        <ul className="boardModalList">
+          <li>
+            <a href="https://www.instagram.com/ot_vpresearch/" target="_blank" rel="noreferrer noopener">
+              Instagram
+            </a>
+          </li>
+          <li>
+            <a href="https://x.com/OT_VPResearch" target="_blank" rel="noreferrer noopener">
+              X (Twitter)
+            </a>
+          </li>
+          <li>
+            <a href="https://www.facebook.com/otvpresearch/" target="_blank" rel="noreferrer noopener">
+              Facebook
+            </a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/@OT_VPResearch" target="_blank" rel="noreferrer noopener">
+              YouTube
+            </a>
+          </li>
+        </ul>
+      </div>
+    ),
+  },
+  {
+    title: "Event Hosting",
+    body: "URA Student Research Awards as co-organizer and host for 3 consecutive years.",
+    color: "note-mint",
+    size: "note--md",
+    x: "62",
+    y: "55",
+    r: "-5deg",
+    style: "pin",
+    kind: "modal",
+    modalTitle: "URA Student Research Awards - Co-Organizer (3 Years)",
+    modalContent: (
+      <div className="boardModalBody">
+        <ul className="boardModalList">
+          <li>
+            Led end-to-end planning and execution of a large-scale academic awards
+            event, coordinating stakeholders across research, administration, and student teams.
+          </li>
+          <li>
+            Managed sponsor relationships, communications, and on-site requirements,
+            ensuring deliverables, visibility, and smooth collaboration.
+          </li>
+          <li>
+            Oversaw event logistics including schedules, venue setup, volunteer
+            coordination, and real-time issue resolution during live sessions.
+          </li>
+          <li>
+            Planned and coordinated food services and external vendors, balancing
+            budget constraints, accessibility needs, and attendee experience.
+          </li>
+          <li>
+            Directed social media strategy across pre-event promotion, live coverage,
+            and post-event reporting to maximize engagement and reach.
+          </li>
+          <li>
+            Served as co-organizer across three consecutive years, contributing to
+            strategic planning, task delegation, and continuous process improvement.
+          </li>
+        </ul>
+      </div>
+    ),
+  },
+  {
+    title: "University Clubs",
+    body: "Design, marketing, community work and workshops across campus clubs.",
+    color: "note-mango",
+    size: "note--lg",
+    x: "33",
+    y: "62",
+    r: "4deg",
+    style: "tape",
+    kind: "modal",
+    modalTitle: "University Club Socials I have managed",
+    modalContent: (
+      <div className="boardModalBody">
+        <p className="muted" style={{ marginTop: 0 }}>
+          Quick links:
+        </p>
+        <ul className="boardModalList">
+          <li>
+            <a href="https://www.instagram.com/otu_gdg/" target="_blank" rel="noreferrer noopener">
+              GDG Ontario Tech — Instagram
+            </a>
+          </li>
+          <li>
+            <a href="https://ca.linkedin.com/company/otu-gddon" target="_blank" rel="noreferrer noopener">
+              GDG Ontario Tech — LinkedIn
+            </a>
+          </li>
+          <li>
+            <a href="https://linktr.ee/otu.gdsc" target="_blank" rel="noreferrer noopener">
+              GDG Ontario Tech — Linktree
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/ot_poetsociety/" target="_blank" rel="noreferrer noopener">
+              Poets Society — Instagram
+            </a>
+          </li>
+          <li>
+            <a href="https://linktr.ee/otpoetsociety" target="_blank" rel="noreferrer noopener">
+              Poets Society — Linktree
+            </a>
+          </li>
+        </ul>
+      </div>
+    ),
+  },
 ] as const satisfies readonly BoardNote[];
 
 function BoardModal({
@@ -245,7 +200,6 @@ function BoardModal({
   children: React.ReactNode;
   onClose: () => void;
 }) {
-  // Close on ESC
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
@@ -264,12 +218,12 @@ function BoardModal({
         role="dialog"
         aria-modal="true"
         aria-label={title}
-        onMouseDown={(e) => e.stopPropagation()} // prevent overlay close when clicking modal
+        onMouseDown={(e) => e.stopPropagation()}
       >
         <div className="boardModalHead">
           <h3 className="boardModalTitle">{title}</h3>
           <button className="boardModalClose" onClick={onClose} aria-label="Close">
-            ×
+            x
           </button>
         </div>
         <div className="boardModalContent">{children}</div>
@@ -294,7 +248,7 @@ export default function Board() {
   return (
     <section id="board" className="section boardSection">
       <div className="sectionHead">
-        <h2>Side-Quest Board</h2>
+        <h2>Beyond the Classroom</h2>
       </div>
 
       <div className="boardWrap">
@@ -309,32 +263,25 @@ export default function Board() {
               ["--r" as any]: n.r,
             } as React.CSSProperties;
 
-            // LINK note
-              if (n.kind === "link") {
-                const isHash = n.href === "#";
-                const openNewTab = "targetBlank" in n && n.targetBlank;
+            if (n.kind === "link") {
+              const openNewTab = "targetBlank" in n && n.targetBlank;
 
-                return (
-                  <a
-                    key={i}
-                    className={className}
-                    href={n.href}
-                    style={styleVars}
-                    onClick={(e) => {
-                      if (isHash) e.preventDefault();
-                    }}
-                    target={openNewTab ? "_blank" : undefined}
-                    rel={openNewTab ? "noreferrer noopener" : undefined}
-                  >
-                    {n.style === "pin" && <span className="pin" aria-hidden="true" />}
-                    <h3>{n.title}</h3>
-                    <p>{n.body}</p>
-                  </a>
-                );
-              }
+              return (
+                <a
+                  key={i}
+                  className={className}
+                  href={n.href}
+                  style={styleVars}
+                  target={openNewTab ? "_blank" : undefined}
+                  rel={openNewTab ? "noreferrer noopener" : undefined}
+                >
+                  {n.style === "pin" && <span className="pin" aria-hidden="true" />}
+                  <h3>{n.title}</h3>
+                  <p>{n.body}</p>
+                </a>
+              );
+            }
 
-
-            // MODAL note
             return (
               <a
                 key={i}
