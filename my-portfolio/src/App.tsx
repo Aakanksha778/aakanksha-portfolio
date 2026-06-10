@@ -3,7 +3,6 @@ import "./styles.css";
 import { useLayoutEffect, useRef } from "react";
 import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
 import gsap from "gsap";
-
 import Nav from "./components/Nav";
 import Hero from "./components/Hero";
 import RundownDivider from "./components/Div";
@@ -11,23 +10,19 @@ import About from "./components/About";
 import Projects from "./components/Proj";
 import Board from "./components/Board";
 import Contact from "./components/Contact";
-
 import Aurora from "./pages/Aurora";
 import ProjectsPage from "./pages/ProjectsPage";
+import DesignPage from "./pages/DesignPage";
 
 // ── Page transition wrapper ──────────────────────────────────────────────────
-// Wraps every route. On mount it GSAP-fades in from below.
 function PageTransition({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
   const location = useLocation();
-
   useLayoutEffect(() => {
     const el = ref.current;
     if (!el) return;
-
     const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
     if (reduce) return;
-
     const ctx = gsap.context(() => {
       gsap.fromTo(
         el,
@@ -41,17 +36,13 @@ function PageTransition({ children }: { children: React.ReactNode }) {
         }
       );
     }, el);
-
     return () => ctx.revert();
-  // Re-run on every route change
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
-
   return <div ref={ref}>{children}</div>;
 }
 
 // ── Home page ────────────────────────────────────────────────────────────────
-
 function Home() {
   return (
     <>
@@ -72,7 +63,6 @@ function Home() {
 }
 
 // ── App ──────────────────────────────────────────────────────────────────────
-
 export default function App() {
   return (
     <HashRouter>
@@ -98,6 +88,14 @@ export default function App() {
           element={
             <PageTransition>
               <ProjectsPage />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/design"
+          element={
+            <PageTransition>
+              <DesignPage />
             </PageTransition>
           }
         />

@@ -13,7 +13,7 @@ import fundingHero      from "../assets/proj_pics/funding-bulletin-pic.png";
 type ProjectCard = {
   title: string;
   hook: string;
-  stack: string[];          // shown as "React · TypeScript · CSS"
+  stack: string[];
   thumbImg?: string;
   inProgress?: boolean;
   links?: {
@@ -32,7 +32,6 @@ type Section = {
 };
 
 const sections: Section[] = [
-  // Websites
   {
     heading: "Web & UX/UI",
     intro: "Interactive web projects, CMS work, and user-facing experiences built for clarity and engagement.",
@@ -57,7 +56,7 @@ const sections: Section[] = [
         },
       },
       {
-        title: "Memory Match -  Emoji Game",
+        title: "Memory Match - Emoji Game",
         hook: "A playful memory game where players flip emoji cards to find matching pairs while tracking moves and time.",
         stack: ["HTML", "CSS", "JavaScript"],
         thumbImg: memoryMatchHero,
@@ -77,8 +76,6 @@ const sections: Section[] = [
       },
     ],
   },
-
-  //  Apps 
   {
     heading: "Apps",
     intro: "Mobile and app-focused builds centred on thoughtful design, interaction, and usability.",
@@ -101,8 +98,6 @@ const sections: Section[] = [
       },
     ],
   },
-
-  // Data Viz 
   {
     heading: "Data Visualization",
     intro: "Visual storytelling and analysis projects that turn raw data into accessible, human insights.",
@@ -174,7 +169,6 @@ function Card({ project }: { project: ProjectCard }) {
 
   return (
     <article className={`proj-card${inProgress ? " proj-card--wip" : ""}`}>
-      {/* Thumbnail */}
       <div className="proj-card__media">
         <div className="proj-card__thumb">
           <div className="thumb__shine" aria-hidden="true" />
@@ -191,25 +185,20 @@ function Card({ project }: { project: ProjectCard }) {
         </div>
       </div>
 
-      {/* Body */}
       <div className="proj-card__body">
-        {/* Title row */}
         <div className="proj-card__title-row">
           <h3 className="proj-card__title">{project.title}</h3>
           {inProgress && <span className="proj-card__wip-dot" aria-label="In progress" />}
         </div>
 
-        {/* Stack — slash-separated, monospace */}
         {project.stack[0] !== "TBD" && (
           <p className="proj-card__stack">
             {project.stack.join("  ·  ")}
           </p>
         )}
 
-        {/* Description */}
         <p className="proj-card__hook">{project.hook}</p>
 
-        {/* Actions */}
         {!inProgress && <ProjectActions project={project} />}
 
         {inProgress && (
@@ -251,7 +240,7 @@ export default function ProjectsPage() {
             </div>
           </section>
 
-          {/* Sections */}
+          {/* Project sections */}
           {sections.map((section) => (
             <section key={section.heading} className="section proj-category">
               <div className="proj-category__head">
@@ -265,6 +254,22 @@ export default function ProjectsPage() {
               </div>
             </section>
           ))}
+
+          {/* Design callout */}
+          <section className="section dp-projectsCallout">
+            <div className="dp-projectsCalloutInner">
+              <p className="dp-projectsCalloutEye">Also</p>
+              <h3 className="dp-projectsCalloutTitle">Design &amp; Content Work</h3>
+              <p className="dp-projectsCalloutText">
+                Social media campaigns, web content, and digital design from four years at
+                Ontario Tech University — including AODA-compliant web tools and
+                multi-platform content systems.
+              </p>
+              <Link to="/design" className="dp-projectsCalloutLink">
+                View design portfolio &#8599;
+              </Link>
+            </div>
+          </section>
 
         </main>
         <footer className="footer">© {new Date().getFullYear()} Aakanksha</footer>

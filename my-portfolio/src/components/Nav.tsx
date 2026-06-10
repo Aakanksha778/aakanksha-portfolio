@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import gsap from "gsap";
 
 // ── Lotus SVG logo ─────────────────────────────────────────────────────────
@@ -39,12 +39,10 @@ export default function Nav() {
   const location   = useLocation();
   const navigate   = useNavigate();
 
-  // Scroll to a section — navigates to "/" first if on a sub-page
   const scrollTo = (id: string) => {
     setMenuOpen(false);
     if (location.pathname !== "/") {
       navigate("/");
-      // Wait for the page to mount, then scroll
       setTimeout(() => {
         document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
       }, 120);
@@ -57,27 +55,21 @@ export default function Nav() {
   useEffect(() => {
     const nav = navRef.current;
     if (!nav) return;
-
     let lastY   = window.scrollY;
     let ticking = false;
-
     const update = () => {
       const y         = window.scrollY;
       const goingDown = y > lastY;
       const nearTop   = y < 12;
-
       if (nearTop)        nav.classList.remove("nav--hidden");
       else if (goingDown) nav.classList.add("nav--hidden");
       else                nav.classList.remove("nav--hidden");
-
       lastY   = y;
       ticking = false;
     };
-
     const onScroll = () => {
       if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
     };
-
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -93,15 +85,11 @@ export default function Nav() {
   useLayoutEffect(() => {
     const el = brandTextRef.current;
     if (!el) return;
-
     const letters = el.querySelectorAll<HTMLElement>(".brandLetter");
     if (!letters.length) return;
-
     const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
     if (reduce) return;
-
     let intervalId: number | null = null;
-
     const playBloom = () => {
       gsap.killTweensOf(letters);
       const tl = gsap.timeline();
@@ -111,9 +99,7 @@ export default function Nav() {
       tl.to(letters, { textShadow: "0 0 0px rgba(54,116,181,0)", duration: 0.55, ease: "power2.out", stagger: 0.02, clearProps: "filter" });
       return tl;
     };
-
     const onEnter = () => playBloom();
-
     const ctx = gsap.context(() => {
       playBloom();
       intervalId = window.setInterval(() => {
@@ -122,7 +108,6 @@ export default function Nav() {
       }, 18000);
       el.addEventListener("pointerenter", onEnter);
     }, el);
-
     return () => {
       el.removeEventListener("pointerenter", onEnter);
       ctx.revert();
@@ -157,6 +142,7 @@ export default function Nav() {
             <button onClick={() => scrollTo("about")}>About</button>
             <button onClick={() => scrollTo("work")}>Projects</button>
             <button onClick={() => scrollTo("board")}>Side-Quest</button>
+            <Link to="/design" className="navLink">Design</Link>
             <button onClick={() => scrollTo("contact")}>Contact</button>
           </nav>
 
@@ -200,6 +186,7 @@ export default function Nav() {
             <button onClick={() => scrollTo("about")}>About</button>
             <button onClick={() => scrollTo("work")}>Projects</button>
             <button onClick={() => scrollTo("board")}>Side-Quest</button>
+            <Link to="/design" className="mobileNavLink" onClick={() => setMenuOpen(false)}>Design</Link>
             <button onClick={() => scrollTo("contact")}>Contact</button>
           </nav>
           <div className="mobileSocials">

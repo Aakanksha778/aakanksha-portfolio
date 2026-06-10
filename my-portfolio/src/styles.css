@@ -74,7 +74,6 @@ a:hover{ text-decoration:none; }
   pointer-events: none;
 }
 
-/* 3-column grid: brand | links | right */
 .navInner {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
@@ -157,6 +156,12 @@ a:hover{ text-decoration:none; }
   border-radius: 999px;
 }
 
+/* Suppress underline on Design <Link> */
+.links .navLink::after,
+.links a.navLink::after {
+  display: none;
+}
+
 .navRight {
   display: flex;
   align-items: center;
@@ -185,7 +190,6 @@ a:hover{ text-decoration:none; }
   transform: translateY(-1px);
 }
 
-/* Hamburger */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -218,7 +222,6 @@ a:hover{ text-decoration:none; }
 .hamburger--open .hamLine:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .hamburger--open .hamLine:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* Mobile menu */
 .mobileMenu {
   position: fixed;
   inset: 0;
@@ -357,7 +360,6 @@ a:hover{ text-decoration:none; }
   font-size: 16px;
 }
 
-/* Hero unified action row */
 .heroActions {
   display: flex;
   align-items: center;
@@ -521,7 +523,7 @@ h3{
 [data-page-transition] { min-height: 100vh; }
 
 /* =============================================================================
-   HOMEPAGE PROJECT TILES (Proj.tsx)
+   HOMEPAGE PROJECT TILES
    ============================================================================= */
 .workGrid{
   display:grid;
@@ -626,7 +628,6 @@ h3{
 .tileBody p{ margin: 8px 0 0; color: rgba(31,42,68,0.72); line-height: 1.65; }
 .tileTop{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
 
-/* Stack line - replaces old tag pills */
 .tileStack {
   font-family: "Fraunces", serif;
   font-style: italic;
@@ -663,7 +664,6 @@ h3{
   border: 1px solid rgba(15,23,42,0.10);
 }
 
-/* Featured tile: side-by-side on wide screens */
 @media (min-width: 700px) {
   .tile.feature {
     display: grid;
@@ -688,7 +688,7 @@ h3{
 }
 
 /* =============================================================================
-   GSAP SCROLL CHAPTER (keep - may still be in Home.tsx)
+   GSAP SCROLL CHAPTER
    ============================================================================= */
 .scrollChapter{ margin: 28px 0; position: relative; z-index: 1; }
 .scrollChapter .chapterStage{
@@ -845,7 +845,6 @@ h3{
   .note:hover{ transform: rotate(0deg) scale(1.02); }
 }
 
-/* Board Modal */
 .boardModalOverlay{ position: fixed; inset: 0; background: rgba(15, 23, 42, 0.45); display: grid; place-items: center; z-index: 999; padding: 18px; }
 .boardModal{ width: min(520px, 92vw); max-height: min(70vh, 520px); overflow: auto; background: #D1F8EF; border: 1px solid rgba(0, 60, 113, 0.25); border-radius: 18px; box-shadow: 0 20px 45px rgba(0, 60, 113, 0.25); }
 .boardModalHead{ display:flex; align-items:center; justify-content: space-between; gap: 12px; padding: 14px 16px; background: #003c71; border-top-left-radius: 18px; border-top-right-radius: 18px; }
@@ -907,7 +906,7 @@ h3{
 .contactArrow{ color: rgba(255,255,255,0.85); font-weight: 900; flex: 0 0 auto; }
 
 /* =============================================================================
-   ABOUT - Bento layout
+   ABOUT
    ============================================================================= */
 #about.section--alt {
   background: rgba(209,248,239,0.32);
@@ -939,7 +938,6 @@ h3{
 
 .aboutIntroText { margin: 0; font-family: "Bricolage Grotesque", system-ui, sans-serif; font-weight: 500; font-size: 15.5px; color: rgba(10,42,74,0.82); line-height: 1.8; letter-spacing: -0.01em; }
 
-/* Timeline */
 .timeline { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0; }
 .timelineItem { display: flex; gap: 14px; padding: 14px 0; position: relative; }
 .timelineItem + .timelineItem { border-top: 1px solid rgba(31,42,68,0.09); }
@@ -950,7 +948,6 @@ h3{
 .timelinePlace { font-size: 13px; color: rgba(10,42,74,0.62); font-weight: 600; }
 .timelineBlurb { margin: 5px 0 0; font-size: 13.5px; color: rgba(10,42,74,0.68); line-height: 1.65; }
 
-/* Skills grid */
 .skillsGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
 @media (max-width: 900px) { .skillsGrid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 520px) { .skillsGrid { grid-template-columns: 1fr; } }
@@ -1040,7 +1037,6 @@ h3{
 .aurora-shot__caption { font-size: 14px; color: rgba(10,42,74,0.58); line-height: 1.58; }
 @media (max-width: 600px) { .aurora-shots-grid { grid-template-columns: 1fr; } }
 
-/* Aurora modal */
 .auroraModal { position: fixed; inset: 0; background: rgba(10, 15, 25, 0.65); backdrop-filter: blur(8px); display: grid; place-items: center; z-index: 9999; padding: 18px; }
 .auroraModalInner { position: relative; width: min(860px, 92vw); max-height: min(720px, 86vh); border-radius: 18px; overflow: hidden; background: rgba(255,255,255,0.75); border: 1px solid rgba(255,255,255,0.35); box-shadow: 0 40px 90px rgba(0,0,0,0.35); display: grid; place-items: center; }
 .auroraModalInner img { width: 100%; height: auto; max-height: min(720px, 86vh); object-fit: contain; display: block; }
@@ -1061,7 +1057,7 @@ h3{
 @media (max-width: 680px) { .aurora-ethics { grid-template-columns: 1fr; gap: 0; } }
 
 /* =============================================================================
-   PROJECTS PAGE (/projects)
+   PROJECTS PAGE
    ============================================================================= */
 .projectsPage { padding-top: 40px; padding-bottom: 80px; }
 .projectsPageMain { min-height: 70vh; }
@@ -1105,7 +1101,7 @@ h3{
 .proj-btn--ghost { background: rgba(255,255,255,0.65); color: var(--ink); box-shadow: none; border: 1px solid rgba(15,23,42,0.12); }
 .proj-btn--ghost:hover { background: rgba(255,255,255,0.90); box-shadow: none; }
 
-/* Nav buttons (replace <a> for scroll links - match existing link styles) */
+/* Nav buttons */
 .links button,
 .mobileLinks button {
   background: none;
@@ -1136,3 +1132,561 @@ h3{
   border-radius: 0;
 }
 .mobileLinks button:hover { color: var(--blue-1); }
+
+/* Design nav <Link> */
+.links .navLink,
+.links a.navLink {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 10px 10px;
+  border-radius: 999px;
+  color: var(--nav-link);
+  font-weight: 700;
+  font-size: 0.98rem;
+  letter-spacing: -0.01em;
+  transition: color 200ms ease, transform 200ms ease, background 200ms ease;
+  text-decoration: none;
+  display: inline-block;
+}
+.links .navLink:hover,
+.links a.navLink:hover {
+  color: var(--nav-hover);
+  background: rgba(161,227,249,0.22);
+  transform: translateY(-1px);
+}
+
+/* Mobile Design link */
+.mobileNavLink {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-weight: 900;
+  font-size: 1.8rem;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  text-decoration: none;
+  transition: color 180ms ease;
+  display: block;
+}
+.mobileNavLink:hover { color: var(--blue-1); }
+
+/* =============================================================================
+   DESIGN PAGE — FINAL
+   In styles.css: delete everything from ".dp-root {" to end of file,
+   paste this entire block at the bottom.
+   ============================================================================= */
+
+.dp-root {
+  width: min(1100px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+/* Hero block */
+.dp-heroBlock {
+  padding: 4rem 0 3.5rem;
+  border-bottom: 1px solid rgba(10,42,74,0.10);
+}
+.dp-heroInner {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Back pill */
+.dp-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 18px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  width: fit-content;
+  transition: background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+  box-shadow: 0 6px 16px rgba(10,42,74,0.18);
+}
+.dp-back:hover {
+  background: var(--blue-1);
+  transform: translateX(-2px);
+  box-shadow: 0 10px 22px rgba(54,116,181,0.28);
+}
+
+/* Eyebrow */
+.dp-eyebrow {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue-1);
+  margin: 0 0 0.6rem;
+}
+
+/* Title */
+.dp-title {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 900;
+  color: var(--ink);
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  margin: 0 0 1.1rem;
+}
+
+/* Subtitle */
+.dp-subtitle {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--muted);
+  max-width: 580px;
+  margin: 0;
+}
+
+/* Tools row */
+.dp-toolsRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--ink);
+  opacity: 0.45;
+}
+.dp-toolsRow__item { display: inline-flex; align-items: center; }
+.dp-toolsRow__dot { margin: 0 0.5rem; }
+
+/* Cases */
+.dp-cases { display: flex; flex-direction: column; }
+
+.dp-case {
+  border-bottom: 1px solid rgba(10,42,74,0.09);
+  padding: 4rem 0;
+}
+.dp-case:last-child { border-bottom: none; }
+
+.dp-caseInner {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* Case header */
+.dp-caseHead {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+.dp-caseNum {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--blue-2);
+  opacity: 0.65;
+  min-width: 1.8rem;
+  padding-top: 0.5rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+.dp-caseTitle {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: clamp(1.55rem, 3vw, 2.2rem);
+  font-weight: 900;
+  color: var(--ink);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  margin: 0 0 0.35rem;
+}
+.dp-caseMeta {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-size: 0.92rem;
+  color: rgba(10,42,74,0.52);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Case full-width image */
+.dp-caseImg {
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.55);
+  border: 1px solid rgba(31,42,68,0.10);
+  box-shadow: 0 8px 28px rgba(15,23,42,0.09);
+  min-height: 260px;
+  transition: box-shadow 220ms ease, transform 220ms ease;
+}
+.dp-caseImg:hover {
+  box-shadow: 0 16px 44px rgba(15,23,42,0.14);
+  transform: translateY(-2px);
+}
+.dp-caseImg img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: top center;
+  max-height: 480px;
+}
+
+/* Naturalink 3-panel grid — equal heights */
+.dp-threeGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.85rem;
+  align-items: stretch;
+}
+.dp-threeGrid__fig {
+  margin: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.55);
+  border: 1px solid rgba(31,42,68,0.10);
+  box-shadow: 0 6px 18px rgba(15,23,42,0.09);
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 220ms ease, transform 220ms ease;
+}
+.dp-threeGrid__fig:hover {
+  box-shadow: 0 14px 34px rgba(15,23,42,0.14);
+  transform: translateY(-2px);
+}
+.dp-threeGrid__fig img {
+  width: 100%;
+  flex: 1;
+  display: block;
+  object-fit: cover;
+  object-position: top center;
+  aspect-ratio: 4 / 3;
+}
+.dp-threeGrid__fig figcaption {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: rgba(10,42,74,0.42);
+  padding: 0.55rem 0.85rem 0.6rem;
+  border-top: 1px solid rgba(31,42,68,0.07);
+  background: rgba(255,255,255,0.4);
+}
+
+/* Ontario Tech social 4-panel grid */
+.dp-socialGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.65fr 0.65fr;
+  gap: 0.85rem;
+  align-items: start;
+}
+.dp-socialFig {
+  margin: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.55);
+  border: 1px solid rgba(31,42,68,0.10);
+  box-shadow: 0 6px 18px rgba(15,23,42,0.09);
+  transition: box-shadow 220ms ease, transform 220ms ease;
+}
+.dp-socialFig:hover {
+  box-shadow: 0 14px 34px rgba(15,23,42,0.14);
+  transform: translateY(-2px);
+}
+.dp-socialFig img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+.dp-socialFig--square img {
+  aspect-ratio: 1 / 1;
+  object-position: top center;
+}
+.dp-socialFig--portrait img {
+  aspect-ratio: 9 / 16;
+  object-position: top center;
+}
+
+/* GDG 3-column portrait grid — equal heights */
+.dp-gdgGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+  align-items: stretch;
+}
+.dp-gdgFig {
+  margin: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.55);
+  border: 1px solid rgba(31,42,68,0.10);
+  box-shadow: 0 6px 18px rgba(15,23,42,0.09);
+  transition: box-shadow 220ms ease, transform 220ms ease;
+}
+.dp-gdgFig:hover {
+  box-shadow: 0 14px 34px rgba(15,23,42,0.14);
+  transform: translateY(-2px);
+}
+.dp-gdgFig--tall img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: top center;
+  aspect-ratio: 4 / 5;
+}
+
+/* Case body: text + sidebar */
+.dp-caseBody {
+  display: grid;
+  grid-template-columns: 1fr 210px;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+/* Body text */
+.dp-caseText p {
+  font-size: 1rem;
+  line-height: 1.82;
+  color: rgba(10,42,74,0.74);
+  margin: 0 0 1rem;
+}
+.dp-caseText p:last-child { margin-bottom: 0; }
+
+/* ── SIDEBAR — fixed colors and typography ── */
+.dp-caseSidebar {
+  border-left: 1px solid rgba(10,42,74,0.11);
+  padding-left: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+.dp-sidebarBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.dp-sidebarLabel {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ink);
+  opacity: 0.80;
+  display: block;
+  margin-bottom: 0.1rem;
+}
+.dp-sidebarBlock p {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--ink);
+  opacity: 0.78;
+  margin: 0;
+  font-weight: 400;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+/* Live link */
+.dp-liveLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--blue-1);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  border-bottom: 1.5px solid rgba(54,116,181,0.28);
+  padding-bottom: 1px;
+  transition: color 180ms ease, border-color 180ms ease, transform 180ms ease;
+  width: fit-content;
+}
+.dp-liveLink:hover {
+  color: var(--ink);
+  border-color: rgba(10,42,74,0.5);
+  transform: translateY(-1px);
+}
+
+/* Footer CTA */
+.dp-footerCta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 5rem 0 4rem;
+  text-align: center;
+}
+.dp-footerCta__label {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.4;
+}
+.dp-footerCta__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 28px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  transition: background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+  box-shadow: 0 10px 28px rgba(10,42,74,0.20);
+}
+.dp-footerCta__btn:hover {
+  background: var(--blue-1);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(54,116,181,0.28);
+}
+
+/* Projects page callout */
+.dp-projectsCallout {
+  border-top: 1px solid rgba(31,42,68,0.10);
+  padding-top: 3.5rem;
+  margin-top: 2rem;
+}
+.dp-projectsCalloutInner { max-width: 580px; }
+.dp-projectsCalloutEye {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--blue-1);
+  margin: 0 0 0.5rem;
+  display: block;
+}
+.dp-projectsCalloutTitle {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  margin: 0 0 0.75rem;
+}
+.dp-projectsCalloutText {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--muted);
+  margin: 0 0 1.25rem;
+}
+.dp-projectsCalloutLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  transition: background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+  box-shadow: 0 8px 20px rgba(10,42,74,0.18);
+}
+.dp-projectsCalloutLink:hover {
+  background: var(--blue-1);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(54,116,181,0.26);
+}
+
+/* Reveal */
+.dp-reveal { opacity: 1; }
+
+/* Responsive */
+@media (max-width: 860px) {
+  .dp-caseBody {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .dp-caseSidebar {
+    border-left: none;
+    border-top: 1px solid rgba(10,42,74,0.09);
+    padding-left: 0;
+    padding-top: 1.5rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.25rem 2.5rem;
+  }
+  .dp-sidebarBlock { min-width: 130px; }
+}
+
+@media (max-width: 640px) {
+  .dp-heroBlock { padding: 3rem 0 2.5rem; }
+  .dp-title { font-size: clamp(2.2rem, 8vw, 3rem); }
+  .dp-caseTitle { font-size: clamp(1.35rem, 5vw, 1.7rem); }
+  .dp-socialGrid { grid-template-columns: 1fr 1fr; }
+  .dp-threeGrid { grid-template-columns: 1fr; }
+  .dp-gdgGrid { grid-template-columns: 1fr 1fr; }
+  .dp-caseHead { flex-direction: column; gap: 0.4rem; }
+  .dp-caseNum { padding-top: 0; }
+  .dp-case { padding: 2.5rem 0; }
+  .dp-caseSidebar { flex-direction: column; }
+}
+
+@media (max-width: 420px) {
+  .dp-socialGrid { grid-template-columns: 1fr; }
+  .dp-gdgGrid { grid-template-columns: 1fr; }
+}
+
+/* =============================================================================
+   CENTSORA — equal 2-column grid
+   ============================================================================= */
+.dp-twoGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+  align-items: stretch;
+}
+.dp-twoGrid__fig {
+  margin: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.55);
+  border: 1px solid rgba(31,42,68,0.10);
+  box-shadow: 0 6px 18px rgba(15,23,42,0.09);
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 220ms ease, transform 220ms ease;
+}
+.dp-twoGrid__fig:hover {
+  box-shadow: 0 14px 34px rgba(15,23,42,0.14);
+  transform: translateY(-2px);
+}
+.dp-twoGrid__fig img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: top center;
+  aspect-ratio: 16 / 10;
+  flex: 1;
+}
+.dp-twoGrid__fig figcaption {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: rgba(10,42,74,0.42);
+  padding: 0.55rem 0.85rem 0.6rem;
+  border-top: 1px solid rgba(31,42,68,0.07);
+  background: rgba(255,255,255,0.4);
+}
+
+@media (max-width: 640px) {
+  .dp-twoGrid {
+    grid-template-columns: 1fr;
+  }
+}
